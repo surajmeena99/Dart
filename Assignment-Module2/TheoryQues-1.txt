@@ -1,0 +1,68 @@
+Q. What is inheritance?
+Ans. Inheritance is a fundamental concept in object-oriented programming(OOP). It refers to the mechanism by which
+a new class can be created from an existing class, inheriting the properties and behaviors(i.e. fields and methods)
+of the existing class. The existing class is often referred to as the "base class", "superclass" or "parent class"
+and the new class as the "derived class", "subclass" or "child class".
+
+Q. Which inheritance is not supported by Dart? Why? What is advantage of inheritance?
+Ans. Dart supports single inheritance and does not support multiple inheritance. This means that a Dart class
+can inherit from only one superclass or base class at a time. Multiple inheritance, which allows a class to
+inherit from multiple base classes, is not supported in Dart.
+
+The reason for not supporting multiple inheritance in Dart is to simplify the language and reduce complexity.
+Multiple inheritance can lead to various issues and conflicts, such as the "diamond problem," where the language
+must decide which method to inherit if two or more base classes have methods with the same name. This can make
+the code more challenging to understand and maintain.
+
+Advantages of inheritance:
+1.Code Reusability
+2.Hierarchy and Organization
+3.Polymorphism
+4.Maintenance and Extensibility
+5.Specialization
+
+Q. Difference between inheritance, encapsulation, abstraction and Polymorphism.
+Ans. Inheritance:
+Inheritance is an object-oriented programming concept that allows a new class (subclass or derived class) to 
+inherit attributes and behaviors from an existing class (superclass or base class).
+It establishes an "is-a" relationship, where the derived class is a specialized version of the base class.
+Inheritance promotes code reuse and the extension of existing functionality.
+It focuses on the structure and organization of classes in a hierarchy.
+
+Encapsulation:
+Encapsulation is another OOP concept that involves bundling data (attributes) and the methods (functions) that
+operate on that data into a single unit called a class.
+It hides the internal details and state of an object from the outside, providing access only through well-defined
+interfaces (getters and setters).
+Encapsulation enhances data security and reduces the impact of changes to the internal implementation.
+It primarily focuses on data protection and access control.
+
+Abstraction:
+Abstraction is an OOP concept that focuses on simplifying complex systems by modeling classes based on their 
+essential features, while hiding unnecessary details.
+It involves defining the common characteristics and behaviors of objects as interfaces, abstract classes, or 
+base classes.
+Abstraction emphasizes defining contracts (interfaces or abstract methods) that classes must adhere to.
+It helps in creating a high-level view of a system by ignoring low-level implementation details.
+
+Polymorphism:
+Purpose: Polymorphism is a concept that allows objects of different classes to be treated as objects of a common 
+superclass. It enables a single interface or method to work with different types of objects.
+Relationship: It establishes a "can-be" relationship. Objects of different classes can be treated uniformly if
+they share a common interface or base class.
+Code Flexibility: Polymorphism enhances code flexibility and adaptability. You can write code that can work with
+various related classes without knowing their specific types.
+Method Overloading: Polymorphism can be achieved through method overloading (multiple methods with the same name
+but different parameters) and method overriding (where derived classes provide their implementation of a method).
+Behavior: It focuses on the behavior of objects in the program.
+
+Q. Can we override static method in Dart? and Can we overload static method in Dart?
+Ans. Overriding Static Methods:
+Static methods cannot be overridden in Dart. Static methods belong to the class itself and are not associated
+with specific instances of the class. Therefore, they are not subject to polymorphism or method overriding.
+
+Overloading Static Methods:
+Dart does not support method overloading in the traditional sense, whether the methods are static or instance
+methods. Method overloading is the ability to define multiple methods with the same name in a class but with 
+different parameter lists. In Dart, if you define multiple methods with the same name in a class, the last method 
+definition will override any previous ones, irrespective of the parameter lists.

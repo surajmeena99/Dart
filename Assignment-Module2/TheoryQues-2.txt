@@ -1,0 +1,60 @@
+Q. Can a class implement more than one interface? Can a class extend more than one class in Dart?
+Ans. Implementing Multiple Interfaces:
+Yes, a class in Dart can implement more than one interface. Dart supports multiple interface inheritance. This 
+means that a single class can implement multiple interfaces by specifying them in a comma-separated list after 
+the implements keyword. For example:
+class MyClass implements InterfaceA, InterfaceB, InterfaceC {
+  // Class implementation
+}
+This allows the class to provide implementations for all the methods defined in each of the implemented interfaces.
+
+Extending Multiple Classes (Multiple Inheritance):
+Dart does not support multiple class inheritance, which means that a class cannot directly extend more than one 
+class. Dart follows single inheritance for classes, where a class can have only one direct superclass. This is 
+done to avoid the complexities and ambiguities associated with multiple inheritance.
+
+Q. Can an interface extend more than one interface in Dart?
+Ans. In Dart, an interface (represented by an abstract class) can extend multiple interfaces. This allows you 
+to create new interfaces that inherit the method signatures from multiple existing interfaces. You can specify 
+multiple super-interfaces in the implements clause when defining a new interface.
+
+Q. What will happen if a class implements two interfaces and they both have a method with same name and signature?
+Ans. In Dart, if a class implements two interfaces, and both of those interfaces define a method with the same 
+name and signature, the class is required to provide only a single implementation of that method. Dart does not 
+require you to provide separate implementations for the same method from different interfaces.
+
+Q. Can we pass an object of a subclass to a method expecting an object of the super class? B14. Are static 
+members inherited to sub classes?
+Ans. Passing Subclass Object to a Method Expecting Superclass Object:
+Yes, you can pass an object of a subclass to a method that expects an object of the superclass. Dart supports 
+polymorphism, which allows you to treat an object of a subclass as an object of the superclass. This is useful
+for creating more flexible and extensible code.
+
+Inheritance of Static Members:
+Static members (static fields and methods) are not inherited by subclasses in Dart. Static members are associated 
+with the class itself and are not part of the inheritance hierarchy. Subclasses do not inherit static members,
+and they cannot override them.
+
+Q. What happens if the parent and the child class have a field with same identifier? Are constructors and 
+initializers also inherited to sub classes?
+Ans. Parent and Child Class with a Field with the Same Identifier:
+If both the parent class and the child class have a field with the same identifier, the child class's field will 
+shadow (or hide) the parent class's field. This means that when you access the field within the child class, 
+you are referring to the child class's field, not the parent class's field.
+
+Constructors and Initializers in Subclasses:
+Constructors and initializers are not inherited by subclasses in Dart. Each class must have its own constructor,
+and if you want to call a constructor from the superclass, you need to use the super keyword to do so explicitly.
+
+Q. How do you restrict a member of a class from inheriting by its sub classes? 
+Ans. In Dart, by default, members of a class are inheritable by its subclasses unless they are explicitly marked
+as final or private.
+final Keyword:
+If you mark a member as final, it cannot be overridden or re-implemented by subclasses. This applies to both 
+methods and fields (variables). It effectively restricts any further modification of that member in subclasses.
+
+Private Members:
+Members with names starting with an underscore (_) are considered private in Dart. Private members are not 
+visible to subclasses defined in other files. This provides a form of restriction, but note that it does not 
+prevent a subclass in the same file from accessing or overriding the private members.
+

@@ -1,0 +1,129 @@
+Q. What are the rules of method overriding in Dart?
+Ans. 
+In Dart, method overriding is a fundamental concept in object-oriented programming, and there are specific rules 
+and guidelines to follow when overriding methods:
+Method Signature: The overriding method in the subclass must have the same name, return type, and parameters 
+(including the order, types, and names) as the method in the superclass.
+
+Method Decorator: You must use the @override annotation before the method in the subclass to indicate that it 
+is intended to override a method from the superclass. While not strictly required, it is a good practice to 
+include this annotation for clarity.
+
+Visibility: The overriding method in the subclass should not reduce the visibility of the method in the superclass. 
+This means if the superclass method is public, the subclass method must also be public or less restrictive 
+(e.g., protected or private). You cannot override a private method from the superclass in a subclass.
+
+Covariant Parameters: Dart allows you to use the covariant keyword when declaring parameters in the subclass 
+method. This is typically used when the overridden parameter type is a superclass of the subclass parameter type,
+indicating that you intend to accept a more specific type.
+
+class Superclass {
+  void someMethod(int a, double b) {
+    print("Method in Superclass: $a, $b");
+  }
+}
+
+class Subclass extends Superclass {
+  @override
+  void someMethod(covariant int a, double b) {
+    print("Method in Subclass: $a, $b");
+  }
+}
+
+void main() {
+  Subclass obj = Subclass();
+  obj.someMethod(42, 3.14);
+}
+
+Q. What happens when a class implements two interfaces and both declare field (variable) with same name?
+Ans. When a class implements two interfaces, and both interfaces declare a field (variable) with the same name, the class is required to provide an implementation for that field, and the field in the implementing class acts as an "alias" for both fields from the interfaces.
+
+Dart does not support field declaration in interfaces (abstract classes used as interfaces), so it's important
+to clarify that what's actually happening here is that the class is providing an implementation for the fields
+based on the requirements of both interfaces. The field names are the same, but Dart doesn't directly allow fields
+in interfaces; it enforces method signatures.
+abstract class InterfaceA {
+  int commonField = 42;
+}
+
+abstract class InterfaceB {
+  int commonField = 99;
+}
+
+class MyClass implements InterfaceA, InterfaceB {
+  // This class is required to provide an implementation for commonField.
+
+  @override
+  int commonField = 21; // You can choose the value you want to assign.
+}
+
+void main() {
+  MyClass obj = MyClass();
+  print(obj.commonField); // Output: 21
+}
+
+Q. Can a subclass instance method override a superclass static method? 
+Ans. No, in Dart, a subclass instance method cannot override a superclass static method. Method overriding is 
+a concept related to instance methods, not static methods. Static methods belong to the class itself, and they
+are not part of the inheritance hierarchy. They are associated with the class, and you cannot override them in
+the traditional sense.
+Instance methods can be overridden in subclasses. An instance method in a subclass with the same name and signature 
+as an instance method in the superclass is considered an override.
+
+Static methods cannot be overridden in subclasses. Subclasses can have static methods with the same name as those 
+in the superclass, but this is not method overriding. Instead, it is called method hiding or shadowing, where 
+the static method in the subclass simply hides the static method in the superclass.
+
+Q. Can a subclass static method hide superclass instance method?
+Ans. In Dart, a subclass static method cannot hide a superclass instance method. Method hiding, also known as 
+shadowing, is a concept that typically applies to static methods within a class hierarchy, and it doesn't directly 
+affect instance methods.
+Static methods are associated with the class itself, and they don't participate in the inheritance and overriding 
+mechanisms in the same way that instance methods do. Therefore, a static method in a subclass doesn't hide or 
+override an instance method in the superclass.
+class Superclass {
+  void instanceMethod() {
+    print("Instance method in Superclass");
+  }
+}
+
+class Subclass extends Superclass {
+  static void staticMethod() {
+    print("Static method in Subclass");
+  }
+
+  @override
+  void instanceMethod() {
+    print("Instance method in Subclass");
+  }
+}
+
+void main() {
+  Superclass obj = Subclass();
+  obj.instanceMethod(); // Calls Subclass's overridden instance method.
+
+  // Calling the static method through the class name.
+  Subclass.staticMethod();
+}
+
+Q. Can a superclass access subclass member?
+Ans. In Dart, a superclass cannot directly access or refer to subclass members. The relationship between a 
+superclass and a subclass is hierarchical, with the subclass inheriting members (methods and fields) from the 
+superclass. While a subclass can access and extend members from the superclass, the reverse is not true.
+class Superclass {
+  void superclassMethod() {
+    print("Superclass method");
+  }
+}
+
+class Subclass extends Superclass {
+  void subclassMethod() {
+    print("Subclass method");
+  }
+}
+
+void main() {
+  Subclass obj = Subclass();
+  obj.subclassMethod();  // Access subclass method directly.
+  obj.superclassMethod(); // Access superclass method via subclass object.
+}

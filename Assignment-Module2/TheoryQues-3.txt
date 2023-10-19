@@ -1,0 +1,95 @@
+Q. How do you implement multiple inheritance in Dart?
+Ans. Dart does not support multiple inheritance of classes in the traditional sense, where a single class 
+directly inherits from multiple classes. This design choice was made to avoid complexities and ambiguities 
+associated with multiple inheritance.
+Implementing Multiple Interfaces: You can implement multiple interfaces in a Dart class. Interfaces are defined 
+using abstract classes, and a class can implement multiple interfaces. This allows a class to provide implementations 
+for methods defined in those interfaces. While this is not multiple inheritance in the classic sense, it enables 
+you to define contracts that a class must adhere to.
+abstract class InterfaceA {
+  void methodA();
+}
+
+abstract class InterfaceB {
+  void methodB();
+}
+
+class MyClass implements InterfaceA, InterfaceB {
+  @override
+  void methodA() {
+    // Implementation for methodA
+  }
+
+  @override
+  void methodB() {
+    // Implementation for methodB
+  }
+}
+
+Q. Can a class extend by itself in Dart?
+Ans. No, in Dart, a class cannot extend itself. It is not possible for a class to be its own superclass. 
+Attempting to create such a relationship would lead to a circular reference or an infinite loop, which would 
+not be meaningful and could result in errors or issues.
+
+Q. How do you override a private method in Dart?
+Ans. In Dart, private methods (methods whose names start with an underscore, like _privateMethod) are intended 
+to be used only within the class where they are defined. They cannot be directly overridden in a subclass because 
+they are not accessible outside the class. Private methods are, by design, encapsulated within the class that 
+defines them.
+
+While private methods cannot be overridden in the traditional sense, you can achieve similar behavior by providing 
+a public method in the subclass that calls the private method of the superclass. This effectively allows you to 
+extend or modify the behavior of the private method without directly overriding it.
+
+Q. When to overload a method in Dart and when to override it?
+Ans. Method Overloading:
+Method overloading is the practice of defining multiple methods with the same name in the same class but with 
+different parameter lists (i.e., a different number or type of parameters). In Dart, method overloading is not
+supported in the traditional sense as in some other languages.
+Use method overloading when you want to provide different ways to call a method based on various parameter 
+combinations. For example, you might want to provide flexibility in the number or types of arguments a method 
+can accept.
+Dart doesn't have built-in support for method overloading, but you can achieve similar behavior by using named
+parameters and optional parameters. These features allow you to create methods that can handle different argument 
+counts or combinations.
+
+Method Overriding:
+Method overriding is the practice of providing a new implementation for a method that is already defined in a 
+superclass. It occurs when a subclass provides its version of a method with the same name and signature as the
+method in the superclass.
+Use method overriding when you want to change or extend the behavior of a method inherited from a superclass 
+in a subclass. It allows you to customize the behavior of a method in the context of the subclass.
+Method overriding is a fundamental concept in object-oriented programming and is used for achieving polymorphism 
+and implementing specific behaviors for different classes that share a common interface or base class.
+
+Q. What the order is of extends and implements keyword on Dart class declaration?
+Ans. In Dart, when declaring a class, the extends keyword is used before the implements keyword. 
+The order is as follows:
+class MyClass extends Superclass implements InterfaceA, InterfaceB {
+  // Class definition
+}
+
+The extends keyword is used when a class is inheriting from a superclass (i.e., creating a subclass).
+The implements keyword is used when a class is declaring that it adheres to one or more interfaces.
+
+Q. How do you prevent overriding a Dart method without using the final modifier?
+Ans. In Dart, you can prevent method overriding without using the final modifier by declaring the method in the 
+superclass as a regular method and not marking it with the override keyword. This way, the method in the subclass 
+will not be considered an override, and you can modify it in the subclass without triggering a compiler error.
+
+class Superclass {
+  void regularMethod() {
+    print("Regular method in Superclass");
+  }
+}
+
+class Subclass extends Superclass {
+  void regularMethod() {
+    print("Modified method in Subclass");
+  }
+}
+
+void main() {
+  Subclass obj = Subclass();
+  obj.regularMethod(); // Calls the modified method in Subclass.
+}
