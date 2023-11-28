@@ -17,7 +17,7 @@ void dataModel(Person person){
 
 void main(){
   /*------------ Method-1 ------- */
-  // final Person person = Person("Meena", 25);
+  // final person = Person("Meena", 25);
   // print("Name: ${person.name},\nAge: ${person.age}");
 
   /*------------ Method-2 ------- */
