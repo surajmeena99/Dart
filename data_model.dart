@@ -1,3 +1,4 @@
+//models
 class Person {
   String name;
   int age;
@@ -5,14 +6,15 @@ class Person {
   Person(this.name, this.age);
 }
 
-List<Person> person = [
+//data
+List<Person> persons = [  //list of objects
   Person("Varsha", 28),
   Person("Ritu", 26),
   Person("Suraj",24),
 ];
 
-void dataModel(Person person){
-  print("Name: ${person.name},\nAge: ${person.age}");
+void dataModel(Person myPerson){  //myPerson is a parameter
+  print("Name: ${myPerson.name},\nAge: ${myPerson.age}");
 }
 
 void main(){
@@ -22,10 +24,15 @@ void main(){
 
   /*------------ Method-2 ------- */
   // var index = 0;
-  // print("Name: ${person[index].name},\nAge: ${person[index].age}");
+  // print("Name: ${persons[index].name},\nAge: ${persons[index].age}");
 
-  /*------------ Method-3 ------- */
-  var index = 0;
-  dataModel(person[index]);
+  /*------------ Method-3 --------- */
+  // var index = 0;
+  // dataModel(persons[index]);  //persons[index] is an argument
+
+  /*------------ Method-4 --------- */
+  for(final person in persons){
+    dataModel(person);
+  }
 
 }
